@@ -16,7 +16,7 @@ public class HoaDonBan {
     @Column(name = "ngayLap")
     private Date ngayLap;
     @Column(name = "tongTien")
-    private double tongTien;
+    private int tongTien;
     @ManyToOne
     @JoinColumn(name = "idNhanVien")
     @JsonIgnore
@@ -44,11 +44,11 @@ public class HoaDonBan {
         this.ngayLap = ngayLap;
     }
 
-    public double getTongTien() {
+    public int getTongTien() {
         return tongTien;
     }
 
-    public void setTongTien(double tongTien) {
+    public void setTongTien(int tongTien) {
         this.tongTien = tongTien;
     }
 

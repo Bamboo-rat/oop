@@ -27,12 +27,12 @@ public class NhanVien {
     private List<HoaDonBan> listHoaDonBan;
 
 
-    public int getMaNhanVien() {
+    public int getIdNhanVien() {
         return idNhanVien;
     }
 
-    public void setMaNhanVien(int maNhanVien) {
-        this.idNhanVien = maNhanVien;
+    public void setIdNhanVien(int idNhanVien) {
+        this.idNhanVien = idNhanVien;
     }
 
     public String getHoTen() {

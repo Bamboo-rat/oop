@@ -23,6 +23,10 @@ public class ChiTietHoaDonBan {
     @JsonIgnore
     private Oto idXe;
 
+    @Column(name = "giaTien")
+    private int giaTien;
+
+
     public int getIdCTHDB() {
         return idCTHDB;
     }
@@ -55,4 +59,9 @@ public class ChiTietHoaDonBan {
     public void setIdXe(Oto idXe) {
         this.idXe = idXe;
     }
+
+    public int getGiaTien() {
+        return giaTien;
+    }
+
 }

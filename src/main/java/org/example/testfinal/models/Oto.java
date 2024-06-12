@@ -14,7 +14,7 @@ public class Oto {
     @Column(name = "idXe")
     private int idXe;
     @ManyToOne
-    @JoinColumn(name = "idHang")
+    @JoinColumn(name = "idHang", referencedColumnName = "idHang")
     @JsonIgnore
     private HangXe idHang;
     @Column(name = "tenXe")

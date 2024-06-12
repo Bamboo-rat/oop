@@ -4,22 +4,22 @@ import org.example.testfinal.models.Oto;
 import org.example.testfinal.repository.OtoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class OtoService implements IOtoService {
+
     @Autowired
     private OtoRepository otoRepository;
+
     @Override
     public List<Oto> getAllOto() {
         return otoRepository.findAll();
     }
 
-    //thêm mới ô tô
     @Override
     public Oto addNewOto(Oto oto) {
         Optional<Oto> existingOtoOptional = otoRepository.findById(oto.getIdXe());
@@ -34,14 +34,21 @@ public class OtoService implements IOtoService {
 
     @Override
     public Oto deleteOtoById(int id) {
-        Optional<Oto> existingOtoOptional = otoRepository.findById(id);
-        if (existingOtoOptional.isPresent()) {
-
-        }
-        else
-        {
+        Optional<Oto> oto = otoRepository.findById(id);
+        if (oto.isEmpty()) {
             return null;
         }
+        otoRepository.delete(oto.get());
+        return oto.get();
     }
 
+    @Override
+    public Oto findOtoById(int id) {
+        return otoRepository.findByIdXe(id);
+    }
+
+    @Override
+    public List<Oto> findOtoByName(String name) {
+        return otoRepository.findByTenXeContainsIgnoreCase(name);
+    }
 }

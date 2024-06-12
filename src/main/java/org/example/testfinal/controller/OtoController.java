@@ -1,33 +1,43 @@
 package org.example.testfinal.controller;
 
-import com.google.gson.Gson;
 import org.example.testfinal.models.Oto;
 import org.example.testfinal.services.OtoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.awt.*;
 import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/version1.0")
 public class OtoController {
+
     @Autowired
     private OtoService otoService;
-    @RequestMapping(value = "laydulieuoto",method = RequestMethod.GET)
-    public List<Oto> getAllOto()
-    {
+
+    @GetMapping(value = "laydulieuoto")
+    public List<Oto> getAllOto() {
         return otoService.getAllOto();
     }
-    @RequestMapping(value = "them1oto",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
-    public Oto addNewOto(@RequestBody String oto)
-    {
-        Gson gson = new Gson();
-        Oto ot = gson.fromJson(oto, Oto.class);
-        return  otoService.addNewOto(ot);
+
+    @PostMapping(value = "them1oto", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Oto addNewOto(@RequestBody Oto oto) {
+        return otoService.addNewOto(oto);
     }
+
+    @DeleteMapping(value = "xoaototheoid", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Oto deleteOtoById(@RequestParam int id) {
+        return otoService.deleteOtoById(id);
+    }
+
+    @GetMapping(value = "timototheoid")
+    public Oto findOtoById(@RequestParam int id) {
+        return otoService.findOtoById(id);
+    }
+
+    @GetMapping(value = "timototheoten")
+    public List<Oto> findOtoByName(@RequestParam String name) {
+        return otoService.findOtoByName(name);
+    }
+
 }

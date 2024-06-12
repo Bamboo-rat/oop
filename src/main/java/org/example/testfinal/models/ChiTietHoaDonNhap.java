@@ -20,6 +20,12 @@ public class ChiTietHoaDonNhap {
     @JoinColumn(name = "idXe")
     @JsonIgnore
     private Oto idXe;
+    @Column(name = "donGia")
+    private int donGia;
+
+    @Column(name = "thanhTien")
+    private int thanhTien;
+
 
     public int getIdCTHDN() {
         return idCTHDN;
@@ -51,5 +57,17 @@ public class ChiTietHoaDonNhap {
 
     public void setIdXe(Oto idXe) {
         this.idXe = idXe;
+    }
+
+    public int getDonGia() {
+        return donGia;
+    }
+
+    public void setDonGia(int donGia) {
+        this.donGia = donGia;
+    }
+
+    public int getThanhTien() {
+        return thanhTien = getDonGia() * soLuongXe;
     }
 }
