@@ -12,5 +12,6 @@ public interface IOtoService {
     public Oto deleteOtoById(int id);
     public Oto findOtoById(int id);
     public List<Oto> findOtoByName(String name);
+    public void updateGiaBan(int id, int gia);
 
 }

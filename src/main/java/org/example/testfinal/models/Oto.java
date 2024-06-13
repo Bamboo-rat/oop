@@ -31,7 +31,7 @@ public class Oto {
     private String congSuatDongCo;
 
     @Column(name = "giaBan")
-    private double giaBan;
+    private int giaBan;
     @Column(name = "phienBan")
     private String phienBan;
     @Column(name = "soLuongTon")
@@ -98,11 +98,11 @@ public class Oto {
         this.hopSo = hopSo;
     }
 
-    public double getGiaBan() {
+    public int getGiaBan() {
         return giaBan;
     }
 
-    public void setGiaBan(double giaBan) {
+    public void setGiaBan(int giaBan) {
         this.giaBan = giaBan;
     }
 

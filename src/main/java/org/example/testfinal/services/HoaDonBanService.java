@@ -1,6 +1,10 @@
 package org.example.testfinal.services;
 
+import org.example.testfinal.models.ChiTietHoaDonBan;
+import org.example.testfinal.models.ChiTietHoaDonNhap;
 import org.example.testfinal.models.HoaDonBan;
+import org.example.testfinal.repository.CTHDBRepository;
+import org.example.testfinal.repository.CTHDNRepository;
 import org.example.testfinal.repository.HoaDonBanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,11 +12,14 @@ import org.springframework.stereotype.Service;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class HoaDonBanService implements IHoaDonBanService {
     @Autowired
     private HoaDonBanRepository hoaDonBanRepository;
+    @Autowired
+    private CTHDBService cthdbService;
 
     @Override
     public List<HoaDonBan> getAllHDB() {
@@ -22,6 +29,27 @@ public class HoaDonBanService implements IHoaDonBanService {
     @Override
     public HoaDonBan addNewHDB(HoaDonBan hoaDonBan) {
         return hoaDonBanRepository.save(hoaDonBan);
+    }
+
+    @Override
+    public void printHoaDonBan(int idHoaDonBan) {
+        List<ChiTietHoaDonBan> chiTietHoaDonBanList = cthdbService.findByIdHDB(idHoaDonBan);
+        for (ChiTietHoaDonBan cthdb : chiTietHoaDonBanList) {
+            System.out.println("Thông tin chi tiết hóa đơn bán:");
+            // In thông tin chi tiết hóa đơn bán
+            System.out.println(cthdb.toString());
+        }
+    }
+
+    @Override
+    public void tongTienHDB(int idHDB) {
+        Optional<HoaDonBan> hoaDonBan = hoaDonBanRepository.findById(idHDB);
+        List<ChiTietHoaDonBan> chiTietHoaDonBanList = cthdbService.findByIdHDB(idHDB);
+        int thanhTien = 0;
+        for (ChiTietHoaDonBan cthdb : chiTietHoaDonBanList) {
+            thanhTien += cthdb.getThanhTien();
+        }
+        hoaDonBan.get().setTongTien(thanhTien);
     }
 
     @Override

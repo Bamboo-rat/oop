@@ -24,7 +24,7 @@ public class ChiTietHoaDonBan {
     private Oto idXe;
 
     @Column(name = "giaTien")
-    private int giaTien;
+    private int thanhTien;
 
 
     public int getIdCTHDB() {
@@ -60,8 +60,11 @@ public class ChiTietHoaDonBan {
         this.idXe = idXe;
     }
 
-    public int getGiaTien() {
-        return giaTien;
+    public int getThanhTien() {
+        return thanhTien;
     }
 
+    public void setThanhTien(int giaTien) {
+        this.thanhTien = giaTien;
+    }
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "api/version1.0")
+@RequestMapping(value = "api/hoadonban")
 public class HoaDonBanController {
 
     @Autowired
@@ -23,6 +23,10 @@ public class HoaDonBanController {
     @RequestMapping(value = "themhoadonban", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public HoaDonBan addNewHoaDonBan(@RequestBody HoaDonBan hoaDonBan) {
         return hoaDonBanService.addNewHDB(hoaDonBan);
+    }
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public void printHoaDonBan(@PathVariable int id) {
+        hoaDonBanService.printHoaDonBan(id);
     }
 
     @RequestMapping(value = "tongtienthang", method = RequestMethod.GET)

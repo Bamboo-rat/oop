@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "api/version1.0")
+@RequestMapping(value = "api/hangxe")
 public class HangXeController {
 
     @Autowired
@@ -21,7 +21,7 @@ public class HangXeController {
         return hangXeService.getAllHangXe();
     }
 
-    @PostMapping(value = "themhxe", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "themhhangxe", produces = MediaType.APPLICATION_JSON_VALUE)
     public HangXe addNewHangXe(@RequestBody HangXe hangXe) {
         return hangXeService.addNewHang(hangXe);
     }

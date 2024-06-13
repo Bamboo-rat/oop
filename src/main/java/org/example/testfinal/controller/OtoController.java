@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "api/version1.0")
+@RequestMapping(value = "api/oto")
 public class OtoController {
 
     @Autowired

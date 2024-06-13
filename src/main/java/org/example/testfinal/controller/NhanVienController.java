@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "api/version1.0")
+@RequestMapping(value = "api/nhanvien")
 public class NhanVienController {
 
     @Autowired

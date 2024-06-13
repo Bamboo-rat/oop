@@ -14,6 +14,8 @@ public class OtoService implements IOtoService {
 
     @Autowired
     private OtoRepository otoRepository;
+    @Autowired
+    private CTHDNService cthdnService;
 
     @Override
     public List<Oto> getAllOto() {
@@ -50,5 +52,13 @@ public class OtoService implements IOtoService {
     @Override
     public List<Oto> findOtoByName(String name) {
         return otoRepository.findByTenXeContainsIgnoreCase(name);
+    }
+
+    @Override
+    public void updateGiaBan(int id, int gia) {
+        Optional<Oto> otoOptional = otoRepository.findById(id);
+        Oto oto = otoOptional.get();
+        oto.setGiaBan(gia);
+        otoRepository.save(oto);
     }
 }

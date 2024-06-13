@@ -10,4 +10,6 @@ public interface IHoaDonBanService {
     public int tongTienThang(int thang);
     public int tongTienQuy(int quy);
     public int tongTienNam(int nam);
+    public void printHoaDonBan(int idHoaDonBan);
+    public void tongTienHDB(int idHDB);
 }
